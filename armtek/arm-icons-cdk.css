@@ -1,0 +1,926 @@
+[class*="arm-icon__"] {
+    position: relative;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    vertical-align: middle;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat !important;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 24px;
+    width: 24px;
+}
+
+[class*="_12"][class*="arm-icon__"] {
+    height: 12px;
+    width: 12px;
+}
+
+[class*="_16"][class*="arm-icon__"] {
+    height: 16px;
+    width: 16px;
+}
+
+[class*="_18"][class*="arm-icon__"] {
+    height: 18px;
+    width: 18px;
+}
+
+[class*="_20"][class*="arm-icon__"] {
+    height: 20px;
+    width: 20px;
+}
+
+[class*="_24"][class*="arm-icon__"] {
+    height: 24px;
+    width: 24px;
+}
+
+[class*="_48"][class*="arm-icon__"] {
+    height: 48px;
+    width: 48px;
+}
+
+.arm-icon__account_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__account_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__account_18.svg');
+}
+
+.arm-icon__account_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__account_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__account_24.svg');
+}
+
+.arm-icon__account_48 {
+    mask: url('../icons/arm-icons/48/arm-icon__account_48.svg');
+    -webkit-mask: url('../icons/arm-icons/48/arm-icon__account_48.svg');
+}
+
+.arm-icon__backburger_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__backburger_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__backburger_18.svg');
+}
+
+.arm-icon__backburger_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__backburger_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__backburger_24.svg');
+}
+
+.arm-icon__checkbox-blank-outline_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__checkbox-blank-outline_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__checkbox-blank-outline_18.svg');
+}
+
+.arm-icon__checkbox-blank-outline_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__checkbox-blank-outline_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__checkbox-blank-outline_24.svg');
+}
+
+.arm-icon__checkbox-marked_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__checkbox-marked_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__checkbox-marked_18.svg');
+}
+
+.arm-icon__checkbox-marked_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__checkbox-marked_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__checkbox-marked_24.svg');
+}
+
+.arm-icon__chevron-double-left_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__chevron-double-left_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__chevron-double-left_18.svg');
+}
+
+.arm-icon__chevron-double-left_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__chevron-double-left_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__chevron-double-left_24.svg');
+}
+
+.arm-icon__chevron-down_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__chevron-down_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__chevron-down_18.svg');
+}
+
+.arm-icon__chevron-down_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__chevron-down_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__chevron-down_24.svg');
+}
+
+.arm-icon__chevron-left_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__chevron-left_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__chevron-left_18.svg');
+}
+
+.arm-icon__chevron-left_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__chevron-left_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__chevron-left_24.svg');
+}
+
+.arm-icon__chevron-right_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__chevron-right_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__chevron-right_18.svg');
+}
+
+.arm-icon__chevron-right_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__chevron-right_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__chevron-right_24.svg');
+}
+
+.arm-icon__chevron-up_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__chevron-up_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__chevron-up_18.svg');
+}
+
+.arm-icon__chevron-up_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__chevron-up_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__chevron-up_24.svg');
+}
+
+.arm-icon__cog_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__cog_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__cog_18.svg');
+}
+
+.arm-icon__cog_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__cog_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__cog_24.svg');
+}
+
+.arm-icon__eye_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__eye_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__eye_18.svg');
+}
+
+.arm-icon__eye-off_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__eye-off_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__eye-off_18.svg');
+}
+
+.arm-icon__eye-off_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__eye-off_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__eye-off_24.svg');
+}
+
+.arm-icon__eye_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__eye_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__eye_24.svg');
+}
+
+.arm-icon__filter-variant-plus_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__filter-variant-plus_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__filter-variant-plus_18.svg');
+}
+
+.arm-icon__filter-variant-plus_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__filter-variant-plus_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__filter-variant-plus_24.svg');
+}
+
+.arm-icon__filter-variant_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__filter-variant_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__filter-variant_18.svg');
+}
+
+.arm-icon__filter-variant_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__filter-variant_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__filter-variant_24.svg');
+}
+
+.arm-icon__forwardburger_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__forwardburger_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__forwardburger_18.svg');
+}
+
+.arm-icon__forwardburger_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__forwardburger_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__forwardburger_24.svg');
+}
+
+.arm-icon__home_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__home_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__home_18.svg');
+}
+
+.arm-icon__home_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__home_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__home_24.svg');
+}
+
+.arm-icon__menu-down_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__menu-down_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__menu-down_18.svg');
+}
+
+.arm-icon__menu-down_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__menu-down_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__menu-down_24.svg');
+}
+
+.arm-icon__menu-left_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__menu-left_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__menu-left_18.svg');
+}
+
+.arm-icon__menu-left_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__menu-left_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__menu-left_24.svg');
+}
+
+.arm-icon__menu-right_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__menu-right_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__menu-right_18.svg');
+}
+
+.arm-icon__menu-right_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__menu-right_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__menu-right_24.svg');
+}
+
+.arm-icon__menu-up_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__menu-up_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__menu-up_18.svg');
+}
+
+.arm-icon__menu-up_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__menu-up_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__menu-up_24.svg');
+}
+
+.arm-icon__monitor-share_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__monitor-share_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__monitor-share_18.svg');
+}
+
+.arm-icon__monitor-share_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__monitor-share_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__monitor-share_24.svg');
+}
+
+.arm-icon__restore_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__restore_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__restore_18.svg');
+}
+
+.arm-icon__restore_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__restore_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__restore_24.svg');
+}
+
+.arm-icon__swap-vertical_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__swap-vertical_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__swap-vertical_18.svg');
+}
+
+.arm-icon__swap-vertical_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__swap-vertical_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__swap-vertical_24.svg');
+}
+
+.arm-icon__tools_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__tools_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__tools_18.svg');
+}
+
+.arm-icon__tools_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__tools_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__tools_24.svg');
+}
+
+.arm-icon__window-close_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__window-close_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__window-close_18.svg');
+}
+
+.arm-icon__window-close_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__window-close_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__window-close_20.svg');
+}
+
+.arm-icon__window-close_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__window-close_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__window-close_24.svg');
+}
+
+.arm-icon__cancel_48 {
+    mask: url('../icons/arm-icons/48/arm-icon__cancel_48.svg');
+    -webkit-mask: url('../icons/arm-icons/48/arm-icon__cancel_48.svg');
+}
+
+.arm-icon__folder-open_48 {
+    mask: url('../icons/arm-icons/48/arm-icon__folder-open_48.svg');
+    -webkit-mask: url('../icons/arm-icons/48/arm-icon__folder-open_48.svg');
+}
+
+.arm-icon__monitor_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__monitor_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__monitor_24.svg');
+}
+
+.arm-icon___arrow-bottom-left-thick_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__arrow-bottom-left-thick_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__arrow-bottom-left-thick_20.svg');
+}
+
+.arm-icon__camera-timer_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__camera-timer_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__camera-timer_20.svg');
+}
+
+.arm-icon__check-bold_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__check-bold_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__check-bold_20.svg');
+}
+
+.arm-icon__text-box_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__text-box_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__text-box_20.svg');
+}
+
+.arm-icon___arrow-bottom-left-thick_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__arrow-bottom-left-thick_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__arrow-bottom-left-thick_18.svg');
+}
+
+.arm-icon__camera-timer_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__camera-timer_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__camera-timer_18.svg');
+}
+
+.arm-icon__check-bold_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__check-bold_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__check-bold_18.svg');
+}
+
+.arm-icon__text-box_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__text-box_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__text-box_18.svg');
+}
+
+
+.arm-icon__information-outline_16 {
+    mask: url('../icons/arm-icons/16/arm-icon__information-outline_16.svg');
+    -webkit-mask: url('../icons/arm-icons/16/arm-icon__information-outline_16.svg');
+}
+
+.arm-icon__card-account-details-outline_12 {
+    mask: url('../icons/arm-icons/12/arm-icon__card-account-details-outline_12.svg');
+    -webkit-mask: url('../icons/arm-icons/12/arm-icon__card-account-details-outline_12.svg');
+}
+
+.arm-icon__phone_12 {
+    mask: url('../icons/arm-icons/12/arm-icon__phone_12.svg');
+    -webkit-mask: url('../icons/arm-icons/12/arm-icon__phone_12.svg');
+}
+
+.arm-icon__calendar_12 {
+    mask: url('../icons/arm-icons/12/arm-icon__calendar_12.svg');
+    -webkit-mask: url('../icons/arm-icons/12/arm-icon__calendar_12.svg');
+}
+
+.arm-icon__chart-box_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__chart-box_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__chart-box_20.svg');
+}
+
+.arm-icon__collage_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__collage_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__collage_20.svg');
+}
+
+.arm-icon__burger_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__burger_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__burger_24.svg');
+}
+
+.arm-icon__plus_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__plus_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__plus_20.svg');
+}
+
+.arm-icon__help-center_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__help-center_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__help-center_20.svg');
+}
+
+.arm-icon__fire_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__fire_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__fire_20.svg');
+}
+
+.arm-icon__percent_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__percent_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__percent_20.svg');
+}
+
+.arm-icon__star-four-points_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__star-four-points_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__star-four-points_20.svg');
+}
+
+.arm-icon__thumb-up_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__thumb-up_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__thumb-up_20.svg');
+}
+
+.arm-icon__snowflake_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__snowflake_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__snowflake_20.svg');
+}
+
+.arm-icon__weather-partly-cloudy_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__weather-partly-cloudy_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__weather-partly-cloudy_20.svg');
+}
+
+.arm-icon__weather-sunny_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__weather-sunny_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__weather-sunny_20.svg');
+}
+
+.arm-icon__weather-pouring_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__weather-pouring_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__weather-pouring_20.svg');
+}
+
+.arm-icon__trash-can-clickable_16 {
+    mask: url('../icons/arm-icons/16/arm-icon__trash-can_16.svg');
+    -webkit-mask: url('../icons/arm-icons/16/arm-icon__trash-can_16.svg');
+    background: #E53935;
+    cursor: pointer;
+}
+
+.arm-icon__pencil_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__pencil_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__pencil_20.svg');
+}
+
+.arm-icon__format-list-bulleted_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__format-list-bulleted_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__format-list-bulleted_20.svg');
+}
+
+.arm-icon__cash-multiple_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__cash-multiple_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__cash-multiple_20.svg');
+}
+
+.arm-icon__clipboard-list_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__clipboard-list_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__clipboard-list_20.svg');
+}
+
+.arm-icon__monitor_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__monitor_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__monitor_20.svg');
+}
+
+.arm-icon__sale_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__sale_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__sale_20.svg');
+}
+
+.arm-icon__wallet-giftcard_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__wallet-giftcard_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__wallet-giftcard_20.svg');
+}
+
+.arm-icon__file-percent_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__file-percent_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__file-percent_20.svg');
+}
+
+.arm-icon__book-open-variant_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__book-open-variant_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__book-open-variant_20.svg');
+}
+
+.arm-icon__checkbox-multiple-marked-circle-outline_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__checkbox-multiple-marked-circle-outline_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__checkbox-multiple-marked-circle-outline_20.svg');
+}
+
+.arm-icon__close-circle-multiple-outline_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__close-circle-multiple-outline_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__close-circle-multiple-outline_20.svg');
+}
+
+.arm-icon__upload_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__upload_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__upload_20.svg');
+}
+
+.arm-icon__abacus_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__abacus_20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__abacus_20.svg');
+}
+
+.arm-icon__link_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__link_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__link_18.svg');
+}
+
+.arm-icon__link_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__link_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__link_24.svg');
+}
+
+.arm-icon__no-icon_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__no-icon_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__no-icon_24.svg');
+}
+
+.arm-icon__no-color_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__no-color_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__no-color_24.svg');
+}
+
+.arm-icon__fire_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__fire_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__fire_24.svg');
+}
+
+.arm-icon__percent_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__percent_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__percent_24.svg');
+}
+
+.arm-icon__snowflake_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__snowflake_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__snowflake_24.svg');
+}
+
+.arm-icon__star-four-points_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__star-four-points_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__star-four-points_24.svg');
+}
+
+.arm-icon__thumb-up_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__thumb-up_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__thumb-up_24.svg');
+}
+
+.arm-icon__weather-partly-cloudy_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__weather-partly-cloudy_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__weather-partly-cloudy_24.svg');
+}
+
+.arm-icon__weather-pouring_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__weather-pouring_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__weather-pouring_24.svg');
+}
+
+.arm-icon__weather-sunny_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__weather-sunny_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__weather-sunny_24.svg');
+}
+
+.arm-icon__check_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__check_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__check_18.svg');
+}
+
+.arm-icon__close_16 {
+    mask: url('../icons/arm-icons/16/arm-icon__close_16.svg');
+    -webkit-mask: url('../icons/arm-icons/16/arm-icon__close_16.svg');
+}
+
+.arm-icon__close_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__close_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__close_18.svg');
+}
+
+.arm-icon__close_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__close_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__close_24.svg');
+}
+
+.arm-icon__done-mod_16 {
+    mask: url('../icons/arm-icons/16/arm-icon__done-mod_16.svg');
+    -webkit-mask: url('../icons/arm-icons/16/arm-icon__done-mod_16.svg');
+}
+
+.arm-icon__done-mod_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__done-mod_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__done-mod_18.svg');
+}
+
+.arm-icon__done-mod_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__done-mod_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__done-mod_24.svg');
+}
+
+.arm-icon__delete-forever-mod_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__delete-forever-mod_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__delete-forever-mod_18.svg');
+}
+
+.arm-icon__delete-forever-mod_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__delete-forever-mod_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__delete-forever-mod_24.svg');
+}
+
+.arm-icon__business-center_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__business-center_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__business-center_24.svg');
+}
+
+.arm-icon__chrome-reader-mode-mod_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__chrome-reader-mode-mod_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__chrome-reader-mode-mod_24.svg');
+}
+
+.arm-icon__description_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__description_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__description_24.svg');
+}
+
+.arm-icon__people_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__people_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__people_24.svg');
+}
+
+.arm-icon__add-circle-outline_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__add-circle-outline_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__add-circle-outline_24.svg');
+}
+
+.arm-icon__contact-page-mod_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__contact-page-mod_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__contact-page-mod_24.svg');
+}
+
+.arm-icon__place_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__place_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__place_24.svg');
+}
+
+.arm-icon__save_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__save_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__save_18.svg');
+}
+
+.arm-icon__bookmark_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__bookmark_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__bookmark_24.svg');
+}
+
+.arm-icon__bookmark-border_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__bookmark-border_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__bookmark-border_24.svg');
+}
+
+.arm-icon__comment-mode-outlined_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__comment-mode-outlined_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__comment-mode-outlined_24.svg');
+}
+
+.arm-icon__add_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__add_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__add_24.svg');
+}
+
+.arm-icon__comment_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__comment_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__comment_24.svg');
+}
+
+.arm-icon__phone_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__phone_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__phone_24.svg');
+}
+
+.arm-icon__smartphone-mod_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__smartphone-mod_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__smartphone-mod_24.svg')
+}
+
+.arm-icon__add-circle-outline_18 {
+    mask: url('../icons/arm-icons/18/arm-icon__add-circle-outline_18.svg');
+    -webkit-mask: url('../icons/arm-icons/18/arm-icon__add-circle-outline_18.svg');
+}
+
+.arm-icon__gps-fixed_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__gps-fixed_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__gps-fixed_24.svg')
+}
+
+.arm-icon__gps-not-fixed_24 {
+    mask: url('../icons/arm-icons/24/arm-icon__gps-not-fixed_24.svg');
+    -webkit-mask: url('../icons/arm-icons/24/arm-icon__gps-not-fixed_24.svg')
+}
+
+.arm-icon__table-edit_20 {
+    mask: url('../icons/arm-icons/20/arm-icon__table-edit-20.svg');
+    -webkit-mask: url('../icons/arm-icons/20/arm-icon__table-edit-20.svg')
+}
+
+/**/
+.arm-icon__edit-filter_18 {
+    mask: url('../icons/arm-icons/edit-filter.svg');
+    -webkit-mask: url('../icons/arm-icons/edit-filter.svg')
+}
+
+.arm-icon__cross-button_18 {
+    mask: url('../icons/arm-icons/red-cross.svg');
+    -webkit-mask: url('../icons/arm-icons/red-cross.svg')
+}
+
+.arm-icon__ok-button_18 {
+    mask: url('../icons/arm-icons/ok.svg');
+    -webkit-mask: url('../icons/arm-icons/ok.svg')
+}
+
+.arm-icon__filter-arrow_16 {
+    mask: url('../icons/arm-icons/filter-with-arrow.svg');
+    -webkit-mask: url('../icons/arm-icons/filter-with-arrow.svg');
+}
+
+.arm-icon__filter-plus_16 {
+    mask: url('../icons/arm-icons/filter-plus.svg');
+    -webkit-mask: url('../icons/arm-icons/filter-plus.svg');
+}
+
+.arm-icon__edit-filter_18 {
+    mask: url('../icons/arm-icons/edit-filter.svg');
+    -webkit-mask: url('../icons/arm-icons/edit-filter.svg');
+}
+
+.arm-icon__trash-black {
+    mask: url('../icons/arm-icons/trash-black.svg');
+    -webkit-mask: url('../icons/arm-icons/trash-black.svg');
+    width: 16px;
+    height: 18px;
+}
+.arm-icon__accessories {
+    mask: url('../icons/arm-icons/accessories.svg');
+    -webkit-mask: url('../icons/arm-icons/accessories.svg');
+}
+.arm-icon__autochemistry {
+    mask: url('../icons/arm-icons/autochemistry.svg');
+    -webkit-mask: url('../icons/arm-icons/autochemistry.svg');
+}
+.arm-icon__autocosmetics {
+    mask: url('../icons/arm-icons/autocosmetics.svg');
+    -webkit-mask: url('../icons/arm-icons/autocosmetics.svg');
+}
+.arm-icon__brake_fluids {
+    mask: url('../icons/arm-icons/brake_fluids.svg');
+    -webkit-mask: url('../icons/arm-icons/brake_fluids.svg');
+}
+.arm-icon__brake_system {
+    mask: url('../icons/arm-icons/brake_system.svg');
+    -webkit-mask: url('../icons/arm-icons/brake_system.svg');
+}
+.arm-icon__batteries {
+    mask: url('../icons/arm-icons/batteries.svg');
+    -webkit-mask: url('../icons/arm-icons/batteries.svg');
+}
+.arm-icon__tires {
+    mask: url('../icons/arm-icons/tires.svg');
+    -webkit-mask: url('../icons/arm-icons/tires.svg');
+}
+.arm-icon__essential_products {
+    mask: url('../icons/arm-icons/essential_products.svg');
+    -webkit-mask: url('../icons/arm-icons/essential_products.svg');
+}
+.arm-icon__transmission_oils {
+    mask: url('../icons/arm-icons/transmission_oils.svg');
+    -webkit-mask: url('../icons/arm-icons/transmission_oils.svg');
+}
+.arm-icon__wiper_blades {
+    mask: url('../icons/arm-icons/wiper_blades.svg');
+    -webkit-mask: url('../icons/arm-icons/wiper_blades.svg');
+}
+.arm-icon__motorbike {
+    mask: url('../icons/arm-icons/motorbike.svg');
+    -webkit-mask: url('../icons/arm-icons/motorbike.svg');
+}
+.arm-icon__car_body {
+    mask: url('../icons/arm-icons/car_body.svg');
+    -webkit-mask: url('../icons/arm-icons/car_body.svg');
+}
+.arm-icon__windshieald {
+    mask: url('../icons/arm-icons/windshieald.svg');
+    -webkit-mask: url('../icons/arm-icons/windshieald.svg');
+}
+.arm-icon__car_coolant {
+    mask: url('../icons/arm-icons/car_coolant.svg');
+    -webkit-mask: url('../icons/arm-icons/car_coolant.svg');
+}
+.arm-icon__sealants {
+    mask: url('../icons/arm-icons/sealants.svg');
+    -webkit-mask: url('../icons/arm-icons/sealants.svg');
+}
+.arm-icon__corrugations {
+    mask: url('../icons/arm-icons/corrugations.svg');
+    -webkit-mask: url('../icons/arm-icons/corrugations.svg');
+}
+.arm-icon__drive_unit {
+    mask: url('../icons/arm-icons/drive_unit.svg');
+    -webkit-mask: url('../icons/arm-icons/drive_unit.svg');
+}
+.arm-icon__service_stations_tools {
+    mask: url('../icons/arm-icons/service_stations_tools.svg');
+    -webkit-mask: url('../icons/arm-icons/service_stations_tools.svg');
+}
+.arm-icon__suspension {
+    mask: url('../icons/arm-icons/suspension.svg');
+    -webkit-mask: url('../icons/arm-icons/suspension.svg');
+}
+.arm-icon__catalogs {
+    mask: url('../icons/arm-icons/catalogs.svg');
+    -webkit-mask: url('../icons/arm-icons/catalogs.svg');
+}
+.arm-icon__wheels {
+    mask: url('../icons/arm-icons/wheels.svg');
+    -webkit-mask: url('../icons/arm-icons/wheels.svg');
+}
+.arm-icon__car_bulbs {
+    mask: url('../icons/arm-icons/car_bulbs.svg');
+    -webkit-mask: url('../icons/arm-icons/car_bulbs.svg');
+}
+.arm-icon__suspension_rudder {
+    mask: url('../icons/arm-icons/suspension_rudder.svg');
+    -webkit-mask: url('../icons/arm-icons/suspension_rudder.svg');
+}
+.arm-icon__steering_parts {
+    mask: url('../icons/arm-icons/steering_parts.svg');
+    -webkit-mask: url('../icons/arm-icons/steering_parts.svg');
+}
+.arm-icon__drive_belts {
+    mask: url('../icons/arm-icons/drive_belts.svg');
+    -webkit-mask: url('../icons/arm-icons/drive_belts.svg');
+}
+.arm-icon__supply_system {
+    mask: url('../icons/arm-icons/supply_system.svg');
+    -webkit-mask: url('../icons/arm-icons/supply_system.svg');
+}
+.arm-icon__spring_stepladders {
+    mask: url('../icons/arm-icons/spring_stepladders.svg');
+    -webkit-mask: url('../icons/arm-icons/spring_stepladders.svg');
+}
+.arm-icon__consumption_products {
+    mask: url('../icons/arm-icons/consumption_products.svg');
+    -webkit-mask: url('../icons/arm-icons/consumption_products.svg');
+}
+.arm-icon__brake_pipes {
+    mask: url('../icons/arm-icons/brake_pipes.svg');
+    -webkit-mask: url('../icons/arm-icons/brake_pipes.svg');
+}
+.arm-icon__pipe {
+    mask: url('../icons/arm-icons/pipe.svg');
+    -webkit-mask: url('../icons/arm-icons/pipe.svg');
+}
+.arm-icon__car_clamps {
+    mask: url('../icons/arm-icons/car_clamps.svg');
+    -webkit-mask: url('../icons/arm-icons/car_clamps.svg');
+}
+.arm-icon__car_washers {
+    mask: url('../icons/arm-icons/car_washers.svg');
+    -webkit-mask: url('../icons/arm-icons/car_washers.svg');
+}
+.arm-icon__tools_equipment {
+    mask: url('../icons/arm-icons/tools_equipment.svg');
+    -webkit-mask: url('../icons/arm-icons/tools_equipment.svg');
+}
+.arm-icon__electrical_equipment {
+    mask: url('../icons/arm-icons/electrical_equipment.svg');
+    -webkit-mask: url('../icons/arm-icons/electrical_equipment.svg');
+}
+.arm-icon__common_unknown_category {
+    mask: url('../icons/arm-icons/common_unknown_category.svg');
+    -webkit-mask: url('../icons/arm-icons/common_unknown_category.svg');
+}
+.arm-icon__common_universal_products{
+    mask: url(^assets/icon/assortment/common_universal_products.svg);
+    -webkit-mask: url(^assets/icon/assortment/common_universal_products.svg);
+}
+.arm-icon__engine_oils{
+    mask: url(^assets/icon/assortment/engine_oils.svg);
+    -webkit-mask: url(^assets/icon/assortment/engine_oils.svg);
+}
+.arm-icon__car-hatchback{
+    mask: url(^assets/icon/assortment/car-hatchback.svg);
+    -webkit-mask: url(^assets/icon/assortment/car-hatchback.svg);
+}
+.arm-icon__oils{
+    mask: url(^assets/icon/assortment/oils.svg);
+    -webkit-mask: url(^assets/icon/assortment/oils.svg);
+}
+.arm-icon__wheels_brake_system{
+    mask: url(^assets/icon/assortment/wheels_brake_system.svg);
+    -webkit-mask: url(^assets/icon/assortment/wheels_brake_system.svg);
+}
+.arm-icon__special-equipment-parts{
+    mask: url(^assets/icon/assortment/special-equipment-parts.svg);
+    -webkit-mask: url(^assets/icon/assortment/special-equipment-parts.svg);
+}
+.arm-icon__percent{
+    mask: url(^assets/icon/assortment/percent.svg);
+    -webkit-mask: url(^assets/icon/assortment/percent.svg);
+}

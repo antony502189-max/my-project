@@ -1,0 +1,1 @@
+const url=new URL(location.href);url.href.includes("Roboto-Regular.03523cf578d69fa92322")&&(window.top.postMessage({ready:!0},"*"),window.addEventListener("message",e=>{e.data.logout&&(localStorage.removeItem("_d"),localStorage.removeItem("UserData"),window.top.postMessage({success:!0},"*"))}));

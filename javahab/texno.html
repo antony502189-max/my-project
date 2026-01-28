@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Лабораторная работа №7 | БГУИР | Кафедра инфокоммуникационных технологий | JavaHUB">
+    <title>JavaHUB — ЛР №7 БГУИР</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREAARAAARAAAAABEAAAEAAAABEQAAAREAABEQAAERAAABEAAAERAAABEAAAERAAABEAAAERAAABEAAAERAAABEAAAERAAABEQAAABEAAAEQAAAAEAAAABAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <!-- Highlight.js для Java -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        :root {
+            --primary: #FF9900;      /* PornHub Orange */
+            --secondary: #FF9900;
+            --bg-body: #1A1A1A;      /* Тёмный фон */
+            --bg-header: #0F0F0F;
+            --bg-card: #222222;
+            --text: #FFFFFF;
+            --text-muted: #CCCCCC;
+            --border: #333333;
+            --accent: #FF9900;
+            --java-bg: #111111;
+            --java-text: #CCCCCC;
+            --java-keyword: #FF9900;
+            --btn-bg: #FF9900;
+            --btn-hover: #FFB84D;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --card-shadow: 0 6px 20px rgba(0,0,0,0.5);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-body); color: var(--text); line-height:1.6;
+            min-height:100vh; display:flex; flex-direction:column;
+            overflow-x:hidden;
+        }
+        header {
+            background: var(--bg-header); padding:1.5rem; text-align:center;
+            border-bottom:3px solid var(--primary);
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .logo {
+            background: transparent !important;
+            padding: 0.5rem 0 !important;
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Arial Black', Arial, sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            box-shadow: none !important;
+        }
+        .logo-porn {
+            color: white;
+            background: #000;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px 0 0 6px;
+            margin-right: -2px;
+        }
+        .logo-hub {
+            color: #000;
+            background: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+            transform: translateY(-1px);
+        }
+        nav {
+            margin-top:1rem;
+        }
+        nav ul {
+            list-style:none; display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap;
+        }
+        .nav-link {
+            text-decoration:none; color:var(--text); font-weight:600;
+            padding:0.6rem 1.2rem; border-radius:6px; border: 1px solid transparent;
+            transition: var(--transition);
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            background:var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+
+        main { flex:1; padding:2rem 1rem; }
+        .container { max-width:1200px; margin:auto; }
+        .page { display: none; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .page.active { display: block; opacity: 1; transform: translateY(0); }
+        .post {
+            background:var(--bg-card); border-radius:12px; overflow:hidden;
+            margin-bottom:2rem; box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            opacity: 0; transform: translateY(30px);
+        }
+        .post.visible { opacity: 1; transform: translateY(0); }
+        .post:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 12px 25px rgba(0,0,0,0.6); }
+        .post-img {
+            width:100%; height:180px; background:#333; display:flex;
+            align-items:center; justify-content:center; font-size:1.2rem; color:var(--primary);
+            position: relative; overflow: hidden;
+        }
+        .post-img::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,153,0,0.3) 50%, transparent 70%);
+            transform: translateX(-100%); transition: transform 0.8s;
+        }
+        .post:hover .post-img::after { transform: translateX(100%); }
+        .post-body { padding:1.5rem; }
+        .post-title { 
+            font-size:1.35rem; margin-bottom:0.6rem; color:var(--primary);
+            position: relative; display: inline-block;
+        }
+        .post-title::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+            background: var(--accent); transition: width 0.4s ease;
+        }
+        .post:hover .post-title::after { width: 100%; }
+
+        /* КНОПКИ */
+        .action-btn {
+            display: inline-block;
+            background: var(--btn-bg);
+            color: #000;
+            padding: 0.6rem 1.6rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-decoration: none;
+            margin-top: 0.8rem;
+            transition: var(--transition);
+            box-shadow: 0 3px 8px rgba(255,153,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .action-btn::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            width: 0; height: 0; background: rgba(255,255,255,0.3);
+            border-radius: 50%; transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .action-btn:hover::before { width: 300px; height: 300px; }
+        .action-btn:hover {
+            background: var(--btn-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255,153,0,0.6);
+        }
+
+        /* ВИКТОРИНА НА ГЛАВНОЙ */
+        .quiz-promo {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin: 2rem 0;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #333;
+        }
+        .quiz-promo:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+            border-color: var(--primary);
+        }
+        .quiz-promo i {
+            font-size: 3.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .quiz-promo h3 {
+            margin: 0 0 0.8rem 0;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        .quiz-promo p {
+            margin-bottom: 1.2rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* УРОКИ */
+        .lesson-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            border: 1px solid #333;
+        }
+        .lesson-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+            border-color: var(--primary);
+        }
+        .lesson-header {
+            background: linear-gradient(135deg, #FF9900, #CC7A00);
+            color: #000;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .lesson-header::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+        .lesson-header i {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .lesson-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .lesson-content {
+            padding: 2rem 1.8rem;
+        }
+        .code-block {
+            background: var(--java-bg);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+            position: relative;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Fira Code', Consolas, monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .code-block .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(255,153,0,0.2);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .code-block .copy-btn:hover {
+            background: var(--primary);
+            color: #000;
+        }
+        .explanation {
+            background: #2A2A2A;
+            border-left: 4px solid var(--primary);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        .explanation h4 {
+            margin: 0 0 0.8rem 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        .explanation ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        .explanation li {
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+        .explanation li::marker {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        .run-output {
+            background: #2A2A2A;
+            border: 1px dashed var(--primary);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-family: monospace;
+            color: #90EE90;
+            white-space: pre-wrap;
+        }
+
+        /* ФОРМА */
+        .contact-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #333;
+        }
+        .contact-header {
+            background: var(--primary);
+            color: #000;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .contact-header i {
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+        .contact-header h3 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.35rem;
+        }
+        .simple-form {
+            padding: 2rem 1.8rem 1.8rem;
+        }
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+        .input-wrapper {
+            position: relative;
+        }
+        .input-wrapper i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+        .input-wrapper input,
+        .input-wrapper select,
+        .input-wrapper textarea {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.8rem;
+            background: #2A2A2A;
+            border: 1.8px solid #444;
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--text);
+            transition: border 0.3s ease;
+        }
+        .input-wrapper input:focus,
+        .input-wrapper select:focus,
+        .input-wrapper textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .input-wrapper textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+        .submit-btn {
+            background: var(--btn-bg);
+            color: #000;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1.2rem auto 0;
+            transition: var(--transition);
+        }
+        .submit-btn:hover {
+            background: var(--btn-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255,153,0,0.6);
+        }
+        .form-message {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .form-message.success {
+            background: #2A2A2A;
+            color: #90EE90;
+            border: 1px solid #444;
+        }
+
+        /* YOUTUBE */
+        .youtube-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+        .yt-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border: 1px solid #333;
+        }
+        .yt-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 35px rgba(0,0,0,0.7);
+            border-color: var(--primary);
+        }
+        .yt-thumb {
+            position: relative;
+            height: 200px;
+            background: #000;
+            overflow: hidden;
+        }
+        .yt-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .yt-card:hover .yt-thumb img {
+            transform: scale(1.08);
+        }
+        .yt-play-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .yt-card:hover .yt-play-overlay {
+            opacity: 1;
+        }
+        .yt-play-btn {
+            width: 68px;
+            height: 48px;
+            background: var(--primary);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.8rem;
+            transition: transform 0.3s ease;
+        }
+        .yt-card:hover .yt-play-btn {
+            transform: scale(1.15);
+        }
+        .yt-play-btn i {
+            margin-left: 4px;
+        }
+        .yt-info {
+            padding: 1.5rem 1.3rem;
+        }
+        .yt-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .yt-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+        .yt-meta strong {
+            color: var(--text);
+        }
+        .yt-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            background:#0F0F0F; color:var(--text-muted); text-align:center; padding:1.5rem;
+            margin-top:auto; border-top: 1px solid #333;
+        }
+        .footer-links a {
+            color:#999; margin:0 0.8rem; text-decoration:none; font-size:0.9rem;
+            position: relative; transition: var(--transition);
+        }
+        .footer-links a::after {
+            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+            background: var(--primary); transition: width 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-links a:hover::after { width: 100%; }
+
+        @media (max-width:768px) {
+            nav ul { flex-direction:column; align-items:center; }
+            .lesson-content { padding: 1.5rem; }
+        }
+        .stagger-item {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .stagger-item.visible {
+            opacity: 1; transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header>
+        <div class="logo">
+            <span class="logo-porn">Java</span>
+            <span class="logo-hub">HUB</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link active" data-page="hero">Главная</a></li>
+                <li><a href="#" class="nav-link" data-page="news">Новости</a></li>
+                <li><a href="#" class="nav-link" data-page="tutorials">Уроки</a></li>
+                <li><a href="#" class="nav-link" data-page="youtube">YouTube</a></li>
+                <li><a href="#" class="nav-link" data-page="quiz">Викторина</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- ГЛАВНАЯ -->
+            <div id="hero" class="page active">
+                <article class="post stagger-item">
+                    <div class="post-img">JavaHUB</div>
+                    <div class="post-body">
+                        <h3 class="post-title">JavaHUB — БГУИР ЛР7</h3>
+                        <div class="post-text">
+                            <p>Java, YouTube, 20+ уроков с пошаговым разбором, 20-вопросная Java-викторина.</p>
+                            <p>50+ новостей, jQuery, адаптивность, форма обратной связи.</p>
+                        </div>
+                        <a href="#" class="action-btn" onclick="showPage('tutorials')">Начать учить Java</a>
+                    </div>
+                </article>
+
+                <div class="quiz-promo stagger-item">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Хорошо знаешь Java? Пройди викторину!</h3>
+                    <p>20 вопросов по Java. Проверь свои знания и получи результат мгновенно!</p>
+                    <a href="#" class="action-btn" onclick="showPage('quiz')">Начать тест</a>
+                </div>
+            </div>
+
+            <!-- НОВОСТИ -->
+            <div id="news" class="page">
+                <div id="news-container"></div>
+            </div>
+
+            <!-- УРОКИ -->
+            <div id="tutorials" class="page">
+                <div id="tutorials-container"></div>
+            </div>
+
+            <!-- YOUTUBE -->
+            <div id="youtube" class="page">
+                <div id="youtube-container"></div>
+            </div>
+
+            <!-- ВИКТОРИНА -->
+            <div id="quiz" class="page">
+                <article class="post stagger-item">
+                    <div class="post-img">Java Викторина</div>
+                    <div class="post-body">
+                        <h3 class="post-title">Java Викторина (20 вопросов)</h3>
+                        <div class="post-text">
+                            <p>Проверьте знания Java.</p>
+                            <p>20 вопросов с выбором ответа.</p>
+                        </div>
+                        <button class="action-btn" onclick="startJavaQuiz()">Начать</button>
+                        <div id="java-quiz-container" style="margin-top:1.5rem;"></div>
+                        <p id="java-quiz-result" style="margin-top:1rem; font-weight:bold; color:var(--primary);"></p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- КОНТАКТЫ -->
+            <div id="contact" class="page">
+                <article class="post stagger-item contact-card">
+                    <div class="contact-header">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Обратная связь</h3>
+                    </div>
+                    <div class="post-body">
+                        <form id="contact-form" class="simple-form">
+                            <div class="form-group">
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" placeholder="Ваше имя" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-wrapper">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" placeholder="Email адрес" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-wrapper">
+                                    <i class="fas fa-question-circle"></i>
+                                    <select required>
+                                        <option value="" disabled selected>Тип обращения</option>
+                                        <option>Вопрос</option>
+                                        <option>Жалоба</option>
+                                        <option>Предложение</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-wrapper">
+                                    <i class="fas fa-comment-dots"></i>
+                                    <textarea placeholder="Ваше сообщение" rows="4" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                Отправить
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                        <div id="form-message"></div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <p>© 2025 JavaHUB | БГУИР | Лабораторная работа №7</p>
+        <div class="footer-links">
+            <a href="#">Политика конфиденциальности</a>
+            <a href="#">Условия использования</a>
+            <a href="#">Контакты</a>
+        </div>
+    </footer>
+
+    <script>
+        // ДАННЫЕ — НОВОСТИ
+        const newsData = Array.from({length: 50}, (_, i) => ({
+            id: i,
+            title: `Новость ${i+1}: ${['JDK 23', 'Spring 6.1', 'Java 21', 'IntelliJ 2025', 'Maven 4'][i%5]}`,
+            excerpt: "Новые возможности в экосистеме Java: производительность, безопасность, API...",
+            full: `Полная версия новости ${i+1}. Здесь подробное описание о ${['JDK 23', 'Spring 6.1', 'Java 21', 'IntelliJ 2025', 'Maven 4'][i%5]}. Технологии развиваются, Java остаётся лидером!`
+        }));
+
+        // УРОКИ
+        const javaTutorials = [
+            {
+                title: "Переменные и вывод",
+                icon: "fas fa-code",
+                code: `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        String s = "Привет";\n        System.out.println("x = " + x + ", s = " + s);\n    }\n}`,
+                output: "x = 10, s = Привет",
+                explanation: `
+                    <h4>Пошагово:</h4>
+                    <ol>
+                        <li><strong>public class Main</strong> — объявление публичного класса.</li>
+                        <li><strong>public static void main(String[] args)</strong> — точка входа в программу.</li>
+                        <li><strong>int x = 10;</strong> — целочисленная переменная.</li>
+                        <li><strong>String s = "Привет";</strong> — строковая переменная.</li>
+                        <li><strong>System.out.println(...)</strong> — вывод в консоль.</li>
+                    </ol>
+                `
+            },
+            {
+                title: "Классы и объекты",
+                icon: "fas fa-box",
+                code: `class Car {\n    String model;\n    int speed;\n\n    Car(String m) {\n        model = m;\n        speed = 0;\n    }\n\n    void accelerate(int km) {\n        speed += km;\n        System.out.println(model + " разогналась до " + speed + " км/ч!");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Car bmw = new Car("BMW X5");\n        bmw.accelerate(50);\n    }\n}`,
+                output: "BMW X5 разогналась до 50 км/ч!",
+                explanation: `
+                    <h4>Пошагово:</h4>
+                    <ol>
+                        <li><strong>class Car</strong> — определение класса.</li>
+                        <li><strong>String model; int speed;</strong> — поля класса.</li>
+                        <li><strong>Car(String m)</strong> — конструктор.</li>
+                        <li><strong>void accelerate(int km)</strong> — метод.</li>
+                        <li><strong>new Car("BMW X5")</strong> — создание объекта.</li>
+                    </ol>
+                `
+            },
+            {
+                title: "Массивы и циклы",
+                icon: "fas fa-list",
+                code: `public class Main {\n    public static void main(String[] args) {\n        String[] fruits = {"яблоко", "банан", "груша"};\n        for (String f : fruits) {\n            System.out.println("Фрукт: " + f.toUpperCase());\n        }\n    }\n}`,
+                output: "Фрукт: ЯБЛОКО\nФрукт: БАНАН\nФрукт: ГРУША",
+                explanation: `
+                    <h4>Пошагово:</h4>
+                    <ol>
+                        <li><strong>String[] fruits = {...}</strong> — массив строк.</li>
+                        <li><strong>for (String f : fruits)</strong> — foreach-цикл.</li>
+                        <li><strong>f.toUpperCase()</strong> — метод строки.</li>
+                    </ol>
+                `
+            },
+            {
+                title: "Коллекции: ArrayList",
+                icon: "fas fa-th-list",
+                code: `import java.util.ArrayList;\n\npublic class Main {\n    public static void main(String[] args) {\n        ArrayList<String> list = new ArrayList<>();\n        list.add("A");\n        list.add("B");\n        System.out.println("Список: " + list);\n    }\n}`,
+                output: "Список: [A, B]",
+                explanation: `
+                    <h4>Пошагово:</h4>
+                    <ol>
+                        <li><strong>import java.util.ArrayList;</strong> — импорт класса.</li>
+                        <li><strong>new ArrayList&lt;String&gt;()</strong> — создание списка.</li>
+                        <li><strong>list.add("A")</strong> — добавление элемента.</li>
+                    </ol>
+                `
+            },
+            {
+                title: "Условия и методы",
+                icon: "fas fa-cogs",
+                code: `public class Main {\n    static String greet(String name) {\n        return name.isEmpty() ? "Привет, незнакомец!" : "Привет, " + name + "!";\n    }\n\n    public static void main(String[] args) {\n        System.out.println(greet("Мария"));\n        System.out.println(greet(""));\n    }\n}`,
+                output: "Привет, Мария!\nПривет, незнакомец!",
+                explanation: `
+                    <h4>Пошагово:</h4>
+                    <ol>
+                        <li><strong>static String greet(...)</strong> — статический метод.</li>
+                        <li><strong>name.isEmpty() ? ... : ...</strong> — тернарный оператор.</li>
+                        <li>Вызов метода с разными аргументами.</li>
+                    </ol>
+                `
+            }
+        ];
+
+        // YOUTUBE
+        const javaYouTube = [
+            {title: "Java за 100 секунд", id: "eIrMbAQSU34", author: "Fireship", duration: "1:40"},
+            {title: "Java для начинающих", id: "VHbOTaHOoSk", author: "Programming with Mosh", duration: "2:30:00"},
+            {title: "Spring Boot 3 за 1 час", id: "9SGDpanrc8", author: "Amigoscode", duration: "1:00:00"}
+        ];
+
+        // ВИКТОРИНА
+        const javaQuizQuestions = [
+            {q: "Какой тип данных для целых чисел?", a: ["String", "int", "boolean", "double"], correct: 1},
+            {q: "Как создать объект?", a: ["new Class()", "Class c = new;", "create Object", "object()"], correct: 0},
+            {q: "Что такое JVM?", a: ["Java Virtual Machine", "Java Visual Machine", "Java Very Machine", "JavaScript"], correct: 0},
+            {q: "Какой модификатор по умолчанию?", a: ["public", "private", "protected", "package-private"], correct: 3},
+            {q: "Что возвращает equals()?", a: ["int", "String", "boolean", "void"], correct: 2},
+            {q: "Какой цикл гарантирует хотя бы 1 итерацию?", a: ["for", "while", "do-while", "foreach"], correct: 2},
+            {q: "Что такое final у переменной?", a: ["Меняется", "Константа", "Удаляется", "Скрытая"], correct: 1},
+            {q: "Какой метод main?", a: ["public static void main(String[] args)", "void main()", "static main()", "main()"], correct: 0},
+            {q: "Что такое интерфейс?", a: ["Класс", "Абстрактный тип", "Пакет", "Переменная"], correct: 1},
+            {q: "Какой метод для строкового сравнения?", a: ["==", "equals()", "compare()", "isEqual()"], correct: 1},
+            {q: "Что такое ArrayList?", a: ["Фиксированный массив", "Динамический список", "Хэш-таблица", "Очередь"], correct: 1},
+            {q: "Как запустить поток?", a: ["thread.run()", "thread.start()", "new Thread()", "run()"], correct: 1},
+            {q: "Что делает super()?", a: ["Вызывает родительский конструктор", "Создаёт объект", "Удаляет", "Ничего"], correct: 0},
+            {q: "Какой Stream API метод для фильтрации?", a: ["map()", "filter()", "reduce()", "collect()"], correct: 1},
+            {q: "Что такое try-with-resources?", a: ["Автозакрытие ресурсов", "Блок try", "Ресурсы", "Исключение"], correct: 0},
+            {q: "Какой пакет для коллекций?", a: ["java.io", "java.util", "java.net", "java.lang"], correct: 1},
+            {q: "Что такое lambda?", a: ["Анонимная функция", "Класс", "Метод", "Переменная"], correct: 0},
+            {q: "Какой метод hashCode()?", a: ["Для equals()", "Для сравнения", "Для хэша", "Для строк"], correct: 2},
+            {q: "Что такое volatile?", a: ["Видимость изменений", "Синхронизация", "Константа", "Поток"], correct: 0},
+            {q: "JDK включает:", a: ["JRE + инструменты", "Только JVM", "Только JRE", "Только Java"], correct: 0}
+        ];
+
+        // НАВИГАЦИЯ
+        let currentPage = 'hero';
+        let javaQuizActive = false;
+        let javaQuizScore = 0;
+
+        function showPage(pageId) {
+            $('nav .nav-link').removeClass('active');
+            $('.page').removeClass('active');
+            $(`nav .nav-link[data-page="${pageId}"]`).addClass('active');
+            $(`#${pageId}`).addClass('active');
+            currentPage = pageId;
+            $('html, body').animate({ scrollTop: 0 }, 400);
+
+            if (pageId === 'news') loadNews();
+            if (pageId === 'tutorials') loadJavaTutorials();
+            if (pageId === 'youtube') loadYouTube();
+            if (pageId === 'quiz' && !javaQuizActive) $('#java-quiz-container').empty();
+
+            setTimeout(() => {
+                $('.stagger-item, .lesson-card, .quiz-promo, .yt-card').each(function(i) {
+                    $(this).delay(i * 100).queue(function() {
+                        $(this).addClass('visible').dequeue();
+                    });
+                });
+            }, 100);
+        }
+
+        $('nav .nav-link').on('click', function(e) {
+            e.preventDefault();
+            showPage($(this).data('page'));
+        });
+
+        // НОВОСТИ
+        function loadNews() {
+            const html = newsData.map((n, i) => `
+                <article class="post stagger-item">
+                    <div class="post-img">Java Новости</div>
+                    <div class="post-body">
+                        <h3 class="post-title">${n.title}</h3>
+                        <div class="post-text">
+                            <p>${n.excerpt}</p>
+                        </div>
+                        <a href="#" class="action-btn" onclick="showNewsDetail(${n.id})">read</a>
+                    </div>
+                </article>
+            `).join('');
+            $('#news-container').html(html);
+        }
+
+        window.showNewsDetail = function(id) {
+            const news = newsData.find(n => n.id === id);
+            if (!news) return;
+
+            const detailHtml = `
+                <article class="post stagger-item">
+                    <div class="post-img">Java Новости</div>
+                    <div class="post-body">
+                        <h3 class="post-title">${news.title}</h3>
+                        <div class="post-text">
+                            <p>${news.full}</p>
+                        </div>
+                        <a href="#" class="action-btn" onclick="showPage('news')">Назад к новостям</a>
+                    </div>
+                </article>
+            `;
+            $('#news-container').html(detailHtml);
+            setTimeout(() => $('.stagger-item').addClass('visible'), 100);
+        };
+
+        // УРОКИ
+        function loadJavaTutorials() {
+            const html = javaTutorials.map((lesson, i) => `
+                <article class="lesson-card stagger-item">
+                    <div class="lesson-header">
+                        <i class="${lesson.icon}"></i>
+                        <h3>${lesson.title}</h3>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                            <pre><code class="language-java">${lesson.code}</code></pre>
+                        </div>
+                        <div class="explanation">
+                            ${lesson.explanation}
+                        </div>
+                        <div class="run-output">
+                            <strong>Вывод:</strong><br>
+                            <pre>${lesson.output}</pre>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+            $('#tutorials-container').html(html);
+            hljs.highlightAll();
+        }
+
+        window.copyCode = function(btn) {
+            const code = btn.parentElement.querySelector('code').innerText;
+            navigator.clipboard.writeText(code);
+            const original = btn.innerText;
+            btn.innerText = 'Скопировано!';
+            setTimeout(() => btn.innerText = original, 1500);
+        };
+
+        // YOUTUBE
+        function loadYouTube() {
+            const html = javaYouTube.map((v, i) => `
+                <article class="yt-card stagger-item">
+                    <div class="yt-thumb">
+                        <img src="https://img.youtube.com/vi/${v.id}/maxresdefault.jpg" 
+                             alt="${v.title}" 
+                             onerror="this.src='https://img.youtube.com/vi/${v.id}/hqdefault.jpg'">
+                        <div class="yt-play-overlay">
+                            <div class="yt-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yt-info">
+                        <h3 class="yt-title">${v.title}</h3>
+                        <div class="yt-meta">
+                            <div><strong>Автор:</strong> ${v.author}</div>
+                            <div><strong>Длительность:</strong> ${v.duration}</div>
+                        </div>
+                        <p class="yt-desc">
+                            ${i === 0 ? 'Хочешь понять Java за 100 секунд? Кратко и с юмором!' : 
+                              i === 1 ? 'Хочешь изучить Java с нуля? Полный курс для новичков!' : 
+                              'Хочешь создавать веб-приложения? Освой Spring Boot за час!'}
+                        </p>
+                        <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" class="action-btn">
+                            Смотреть видео
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </article>
+            `).join('');
+            $('#youtube-container').html(`<div class="youtube-grid">${html}</div>`);
+        }
+
+        // ВИКТОРИНА
+        window.startJavaQuiz = function() {
+            javaQuizActive = true;
+            javaQuizScore = 0;
+            let html = '<h3 style="margin-bottom:1rem; color:var(--primary);">Java Викторина</h3>';
+            javaQuizQuestions.forEach((q, i) => {
+                html += `<div class="quiz-question" style="margin-bottom:1.5rem;">
+                    <p><strong>${i+1}. ${q.q}</strong></p>`;
+                q.a.forEach((ans, ai) => {
+                    html += `<label style="display:block; margin:0.4rem 0; color:var(--text-muted);">
+                        <input type="radio" name="q${i}" value="${ai}" style="margin-right:0.5rem;"> 
+                        <span>${ans}</span>
+                    </label>`;
+                });
+                html += `</div>`;
+            });
+            html += `<button class="action-btn" onclick="checkJavaQuiz()" style="margin-top:1rem;">Проверить</button>`;
+            $('#java-quiz-container').html(html);
+            $('#java-quiz-result').text('');
+        };
+
+        window.checkJavaQuiz = function() {
+            javaQuizScore = 0;
+            javaQuizQuestions.forEach((q, i) => {
+                const selected = $(`input[name="q${i}"]:checked`).val();
+                if (selected !== undefined && parseInt(selected) === q.correct) javaQuizScore++;
+            });
+            const percent = ((javaQuizScore / 20) * 100).toFixed(1);
+            $('#java-quiz-result').html(`
+                <div style="background:#2A2A2A;padding:1rem;border-radius:8px;margin-top:1rem; border:1px solid #444;">
+                    Результат: <strong style="color:var(--primary);">${javaQuizScore}/20</strong> (${percent}%)<br>
+                    ${javaQuizScore >= 16 ? 'Отлично!' : javaQuizScore >= 12 ? 'Хорошо!' : 'Попробуйте ещё!'}<br>
+                    <button class="action-btn" onclick="startJavaQuiz()" style="margin-top:0.5rem;">Заново</button>
+                </div>
+            `);
+            javaQuizActive = false;
+        };
+
+        // ФОРМА
+        $('#contact-form').on('submit', function(e) {
+            e.preventDefault();
+            const $btn = $(this).find('.submit-btn');
+            const $msg = $('#form-message');
+            $btn.prop('disabled', true).html('Отправка...');
+            setTimeout(() => {
+                $btn.prop('disabled', false).html('Отправить <i class="fas fa-paper-plane"></i>');
+                $msg.html('<div class="form-message success">Сообщение отправлено!</div>');
+                this.reset();
+            }, 1200);
+        });
+
+        // ИНИЦИАЛИЗАЦИЯ
+        $(document).ready(function() {
+            showPage('hero');
+            $(window).trigger('scroll');
+        });
+    </script>
+</body>
+</html>

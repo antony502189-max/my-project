@@ -1,0 +1,380 @@
+@font-face {
+  font-family: RobotoRegular;
+  src: url("../fonts/roboto/Roboto-Regular.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: RobotoMedium;
+  src: url("../fonts/roboto/Roboto-Medium.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: RobotoBold;
+  src: url("../fonts/roboto/Roboto-Bold.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: RobotoBlack;
+  src: url("../fonts/roboto/Roboto-Black.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: MontserratRegular;
+  src: url("../fonts/montserrat/Montserrat-Regular.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: MontserratMedium;
+  src: url("../fonts/montserrat/Montserrat-Medium.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: MontserratBold;
+  src: url("../fonts/montserrat/Montserrat-Bold.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: MontserratBlack;
+  src: url("../fonts/montserrat/Montserrat-Black.ttf");
+  font-display: swap;
+}
+:root {
+  --font_color: var(--black);
+}
+
+.lightTheme {
+  --font_color: var(--black);
+}
+
+.darkTheme {
+  --font_color: var(--white_87);
+}
+
+body {
+  /*font-size: 13px !important;
+  line-height: 18px !important;
+  font-family: RobotoRegular;*/
+  color: var(--font_color);
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
+
+.opacity-text {
+  color: var(--black_60) !important;
+}
+.opacity-text i {
+  background: var(--black_60) !important;
+}
+
+.opacity-text_60 {
+  color: var(--black_60) !important;
+}
+
+.opacity-text_36 {
+  color: var(--black_36) !important;
+}
+
+.font__display1 {
+  font-size: 48px !important;
+  line-height: 58px !important;
+  font-family: RobotoBold;
+  color: var(--font_color);
+}
+.font__display1.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__display2 {
+  font-size: 36px !important;
+  line-height: 42px !important;
+  font-family: RobotoBold;
+  color: var(--font_color);
+}
+.font__display2.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__display3 {
+  font-size: 32px !important;
+  line-height: 38px !important;
+  font-family: RobotoBold;
+  color: var(--font_color);
+}
+.font__display3.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__display4 {
+  font-size: 28px !important;
+  line-height: 32px !important;
+  font-family: RobotoBold;
+  color: var(--font_color);
+}
+.font__display4.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__headline1 {
+  font-size: 24px !important;
+  line-height: 28px !important;
+  font-family: RobotoBold;
+  color: var(--font_color);
+}
+.font__headline1.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__headline4 {
+  font-size: 21px !important;
+  line-height: 26px !important;
+  font-family: RobotoBold;
+  color: var(--font_color);
+}
+.font__headline4.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__headline5 {
+  font-size: 19px !important;
+  line-height: 24px !important;
+  font-family: RobotoBold;
+  color: var(--font_color);
+}
+.font__headline5.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__headline6 {
+  font-size: 17px !important;
+  line-height: 22px !important;
+  font-family: RobotoBold;
+  color: var(--font_color);
+}
+.font__headline6.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__subtitle1 {
+  font-size: 15px !important;
+  line-height: 20px !important;
+  font-family: RobotoBold;
+  letter-spacing: 0.25px;
+  color: var(--font_color);
+}
+.font__subtitle1.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__body1 {
+  font-size: 15px;
+  line-height: 20px;
+  font-family: RobotoRegular;
+  color: var(--font_color);
+}
+.font__body1.montserrat {
+  font-family: MontserratRegular;
+}
+
+.font__subtitle2 {
+  font-size: 13px;
+  line-height: 18px;
+  font-family: RobotoBold;
+  letter-spacing: 0.25px;
+  color: var(--font_color);
+}
+.font__subtitle2.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__body2 {
+  font-size: 13px !important;
+  line-height: 18px !important;
+  font-family: RobotoRegular;
+  color: var(--font_color);
+}
+.font__body2.montserrat {
+  font-family: MontserratRegular;
+}
+
+.font__button,
+.font__button span {
+  font-size: 13px !important;
+  line-height: 18px !important;
+  font-family: RobotoBlack;
+  letter-spacing: 0.25px;
+  color: var(--font_color);
+}
+.font__button.montserrat,
+.font__button span.montserrat {
+  font-family: MontserratBlack;
+}
+
+.font__overline1 {
+  font-size: 11px !important;
+  line-height: 16px !important;
+  font-family: RobotoBold;
+  letter-spacing: 0.5px;
+  color: var(--font_color);
+}
+.font__overline1.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__overline2 {
+  font-size: 10px !important;
+  line-height: 16px !important;
+  font-family: RobotoBold;
+  letter-spacing: 0.5px;
+  color: var(--font_color);
+}
+.font__overline2.montserrat {
+  font-family: MontserratBold;
+}
+
+.font__caption1 {
+  font-size: 11px;
+  line-height: 16px;
+  font-family: RobotoRegular;
+  color: var(--font_color);
+}
+.font__caption1.montserrat {
+  font-family: MontserratRegular;
+}
+
+.font__caption2 {
+  font-size: 10px !important;
+  line-height: 16px !important;
+  font-family: RobotoRegular;
+  color: var(--font_color);
+}
+.font__caption2.montserrat {
+  font-family: MontserratRegular;
+}
+
+.bold {
+  font-family: RobotoBold !important;
+  font-weight: 500 !important;
+}
+.bold.montserrat {
+  font-family: MontserratBold !important;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+@media (min-width: 576px) {
+  .font__display1 {
+    font-size: 64px !important;
+    line-height: 76px !important;
+  }
+  .font__display2 {
+    font-size: 48px !important;
+    line-height: 58px !important;
+  }
+  .font__display3 {
+    font-size: 44px !important;
+    line-height: 52px !important;
+  }
+  .font__display4 {
+    font-size: 36px !important;
+    line-height: 44px !important;
+  }
+  .font__headline1 {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+  .font__headline4 {
+    font-size: 21px !important;
+    line-height: 28px !important;
+  }
+  .font__headline5 {
+    font-size: 19px !important;
+    line-height: 26px !important;
+  }
+}
+@media (min-width: 1200px) {
+  /*body {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }*/
+  .font__display1 {
+    font-size: 72px !important;
+    line-height: 86px !important;
+  }
+  .font__display2 {
+    font-size: 64px !important;
+    line-height: 76px !important;
+  }
+  .font__display3 {
+    font-size: 52px !important;
+    line-height: 62px !important;
+  }
+  .font__display4 {
+    font-size: 44px !important;
+    line-height: 52px !important;
+  }
+  .font__headline1 {
+    font-size: 36px !important;
+    line-height: 44px !important;
+  }
+  .font__headline4 {
+    font-size: 24px !important;
+    line-height: 32px !important;
+  }
+  .font__headline5 {
+    font-size: 22px !important;
+    line-height: 28px !important;
+  }
+  .font__headline6 {
+    font-size: 18px !important;
+    line-height: 24px !important;
+  }
+  .font__subtitle1 {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  .font__body1 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .font__subtitle2 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .font__body2 {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+  .font__button,
+  .font__button span {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+  .font__overline1 {
+    font-size: 12px !important;
+    line-height: 16px !important;
+  }
+  .font__overline2 {
+    font-size: 11px !important;
+    line-height: 16px !important;
+  }
+  .font__caption1 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .font__caption2 {
+    font-size: 11px !important;
+    line-height: 16px !important;
+  }
+}
+
+/*# sourceMappingURL=fonts.css.map */

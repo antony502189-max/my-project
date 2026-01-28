@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vecto - Логистическая платформа</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .logistics-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logistics-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .purchase-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .auth-form {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            background: rgba(255, 255, 255, 1);
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .demo-banner {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="h-full">
+    <div class="logistics-bg min-h-screen">
+        <!-- Навигационная панель -->
+        <nav class="relative z-10 bg-white bg-opacity-10 backdrop-blur-lg border-b border-white border-opacity-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-8">
+                        <button onclick="showPage('home')" class="text-white text-xl font-bold hover:opacity-80 transition-opacity">
+                            Vecto
+                        </button>
+                        <div class="hidden md:flex space-x-4">
+                            <button onclick="showPage('features')" class="text-white opacity-80 hover:opacity-100 px-3 py-2 transition-opacity nav-link" id="nav-features">Возможности</button>
+                            <button onclick="showPage('pricing')" class="text-white opacity-80 hover:opacity-100 px-3 py-2 transition-opacity nav-link" id="nav-pricing">Тарифы</button>
+                            <button onclick="showPage('about')" class="text-white opacity-80 hover:opacity-100 px-3 py-2 transition-opacity nav-link" id="nav-about">О нас</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button onclick="showPage('demo')" class="bg-yellow-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-yellow-600 transition-colors">
+                            Демо
+                        </button>
+                        <button onclick="showPage('auth')" class="bg-white text-purple-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                            Вход
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Главная страница -->
+        <div id="home" style="display: block;">
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <!-- Главный баннер -->
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                        Революция в логистике
+                    </h1>
+                    <p class="text-xl md:text-2xl text-white opacity-90 max-w-3xl mx-auto mb-8">
+                        Управляйте продажами, оптимизируйте доставку и контролируйте расходы с помощью современной платформы Vecto
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="showPage('auth')" class="btn-primary text-white px-8 py-4 rounded-lg font-medium text-lg">
+                            Начать работу
+                        </button>
+                        <button onclick="showPage('demo')" class="bg-white bg-opacity-20 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-opacity-30 transition-all">
+                            Попробовать демо
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Основные возможности -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <div class="purchase-card rounded-xl p-6 card-hover">
+                        <div class="text-4xl mb-4">📦</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Управление продажами</h3>
+                        <p class="text-gray-600">Автоматизируйте процесс продажи </p>
+                    </div>
+                    
+                    <div class="purchase-card rounded-xl p-6 card-hover">
+                        <div class="text-4xl mb-4">🧮</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Калькулятор доставки</h3>
+                        <p class="text-gray-600">Рассчитывайте стоимость доставки с учетом всех параметров и выбирайте оптимальные маршруты</p>
+                    </div>
+                    
+                    <div class="purchase-card rounded-xl p-6 card-hover">
+                        <div class="text-4xl mb-4">📊</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Аналитика и отчеты</h3>
+                        <p class="text-gray-600">Получайте детальную аналитику по расходам и эффективности логистики</p>
+                    </div>
+                    
+                    <div class="purchase-card rounded-xl p-6 card-hover">
+                        <div class="text-4xl mb-4">🤖</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">ИИ-оптимизация</h3>
+                        <p class="text-gray-600">Умные алгоритмы помогают выбрать оптимальные маршруты</p>
+                    </div>
+                    
+                    <div class="purchase-card rounded-xl p-6 card-hover">
+                        <div class="text-4xl mb-4">🔒</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Безопасность</h3>
+                        <p class="text-gray-600">Надежная защита данных и безопасные платежные системы для вашего спокойствия</p>
+                    </div>
+                    
+                    <div class="purchase-card rounded-xl p-6 card-hover">
+                        <div class="text-4xl mb-4">📱</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Мобильность</h3>
+                        <p class="text-gray-600">Управляйте заказами в любое время с любого устройства через веб-интерфейс</p>
+                    </div>
+                </div>
+
+                <!-- Призыв к действию -->
+                <div class="purchase-card rounded-xl p-12 text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Готовы начать?</h2>
+                    <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                        Присоединяйтесь к сотням компаний, которые уже оптимизировали свою логистику с помощью Vecto
+                    </p>
+                    <button onclick="showPage('auth')" class="btn-primary text-white px-8 py-4 rounded-lg font-medium text-lg">
+                        Создать аккаунт бесплатно
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница возможностей -->
+        <div id="features" style="display: none;">
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-white mb-4">Возможности платформы</h1>
+                    <p class="text-xl text-white opacity-90">Все инструменты для эффективной логистики в одном месте</p>
+                </div>
+
+                <!-- Детальные возможности -->
+                <div class="space-y-16">
+                    <!-- Управление закупками -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="purchase-card rounded-xl p-8">
+                            <div class="text-6xl mb-6 text-center">📦</div>
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Управление продажами</h2>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Создание и отслеживание продаж</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Автоматические уведомления</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Контроль сроков доставки</li>
+                            </ul>
+                        </div>
+                        <div class="form-glass rounded-xl p-8">
+                            <h3 class="text-2xl font-bold text-white mb-6">Преимущества</h3>
+                            <div class="space-y-4 text-white">
+                                <div class="flex items-start">
+                                    <div class="text-2xl mr-4">⚡</div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Экономия времени</h4>
+                                        <p class="text-sm opacity-90">Автоматизация рутинных процессов сокращает время обработки заказов в 3 раза</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-2xl mr-4">💰</div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Снижение затрат</h4>
+                                        <p class="text-sm opacity-90">Оптимизация маршрутов экономит до 25% бюджета</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-2xl mr-4">📈</div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Прозрачность</h4>
+                                        <p class="text-sm opacity-90">Полный контроль над всеми этапами закупочного процесса</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Калькулятор доставки -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="form-glass rounded-xl p-8 order-2 lg:order-1">
+                            <h3 class="text-2xl font-bold text-white mb-6">Умный расчет</h3>
+                            <div class="space-y-4 text-white">
+                                <div class="flex items-start">
+                                    <div class="text-2xl mr-4">🎯</div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Точные расчеты</h4>
+                                        <p class="text-sm opacity-90">Учет всех факторов: вес, объем, тип груза, срочность доставки</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-2xl mr-4">🗺️</div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Оптимальные маршруты</h4>
+                                        <p class="text-sm opacity-90">Выбор лучших маршрутов с учетом трафика</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-2xl mr-4">💡</div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Рекомендации</h4>
+                                        <p class="text-sm opacity-90">ИИ предлагает способы оптимизации и экономии на доставке</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="purchase-card rounded-xl p-8 order-1 lg:order-2">
+                            <div class="text-6xl mb-6 text-center">🧮</div>
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Калькулятор доставки</h2>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Расчет стоимости по всей Беларуси и России</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Учет особенностей груза</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Прогнозирование сроков доставки</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>История расчетов</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Аналитика -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="purchase-card rounded-xl p-8">
+                            <div class="text-6xl mb-6 text-center">📊</div>
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Аналитика и отчеты</h2>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Детальная статистика по расходам</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Экспорт данных в Excel/PDF</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✓</span>Настраиваемые дашборды</li>
+                            </ul>
+                        </div>
+                        <div class="form-glass rounded-xl p-8">
+                            <h3 class="text-2xl font-bold text-white mb-6">Принятие решений</h3>
+                            <div class="space-y-4 text-white">
+                                <div class="flex items-start">
+                                    <div class="text-2xl mr-4">📈</div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Данные в реальном времени</h4>
+                                        <p class="text-sm opacity-90">Актуальная информация о всех процессах для быстрого реагирования</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-2xl mr-4">🔍</div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Глубокий анализ</h4>
+                                        <p class="text-sm opacity-90">Выявление трендов и закономерностей для оптимизации процессов</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-2xl mr-4">🎯</div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Стратегическое планирование</h4>
+                                        <p class="text-sm opacity-90">Прогнозы и рекомендации для долгосрочного развития</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница тарифов -->
+        <div id="pricing" style="display: none;">
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-white mb-4">Тарифные планы</h1>
+                    <p class="text-xl text-white opacity-90">Выберите подходящий план для вашего бизнеса</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <!-- Базовый план -->
+                    <div class="purchase-card rounded-xl p-8 relative">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Базовый</h3>
+                            <div class="text-4xl font-bold text-gray-900 mb-1">Бесплатно</div>
+                            <div class="text-gray-600">Для начинающих</div>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>До 10 заказов в месяц</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Базовый калькулятор</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Простая аналитика</li>
+                            <li class="flex items-center text-gray-400"><span class="text-gray-300 mr-3">✗</span>Email поддержка</li>
+                            <li class="flex items-center text-gray-400"><span class="text-gray-300 mr-3">✗</span>Доступ к складу</li>
+                            <li class="flex items-center text-gray-400"><span class="text-gray-300 mr-3">✗</span>API интеграция</li>
+                        </ul>
+                        <button onclick="showPage('auth')" class="w-full bg-gray-600 text-white py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors">
+                            Начать бесплатно
+                        </button>
+                    </div>
+
+                    <!-- Профессиональный план -->
+                    <div class="purchase-card rounded-xl p-8 relative border-2 border-purple-500">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white px-4 py-1 rounded-full text-sm">
+                            Популярный
+                        </div>
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Профессиональный</h3>
+                            <div class="text-4xl font-bold text-purple-600 mb-1">₽2,990</div>
+                            <div class="text-gray-600">в месяц</div>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>До 100 заказов в месяц</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Полный калькулятор</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Расширенная аналитика</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Email поддержка</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Доступ к складу</li>
+                            <li class="flex items-center text-gray-400"><span class="text-gray-300 mr-3">✗</span>API интеграция</li>
+                        </ul>
+                        <button onclick="showPage('auth')" class="w-full btn-primary text-white py-3 rounded-lg font-medium">
+                            Выбрать план
+                        </button>
+                    </div>
+
+                    <!-- Корпоративный план -->
+                    <div class="purchase-card rounded-xl p-8 relative">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Корпоративный</h3>
+                            <div class="text-4xl font-bold text-gray-900 mb-1">₽9,990</div>
+                            <div class="text-gray-600">в месяц</div>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Неограниченные заказы</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Все возможности платформы</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>ИИ-оптимизация</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Email поддержка</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>Доступ к складу</li>
+                            <li class="flex items-center text-gray-600"><span class="text-green-500 mr-3">✓</span>API интеграция</li>
+                        </ul>
+                        <button class="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                            В разработке
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Сравнение планов -->
+                <div class="purchase-card rounded-xl overflow-hidden">
+                    <div class="px-8 py-6 border-b border-gray-200">
+                        <h2 class="text-2xl font-bold text-gray-900">Сравнение возможностей</h2>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-gray-500">Возможности</th>
+                                    <th class="px-6 py-4 text-center text-sm font-medium text-gray-500">Базовый</th>
+                                    <th class="px-6 py-4 text-center text-sm font-medium text-gray-500">Профессиональный</th>
+                                    <th class="px-6 py-4 text-center text-sm font-medium text-gray-500">Корпоративный</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Количество заказов в месяц</td>
+                                    <td class="px-6 py-4 text-center text-sm text-gray-600">10</td>
+                                    <td class="px-6 py-4 text-center text-sm text-gray-600">100</td>
+                                    <td class="px-6 py-4 text-center text-sm text-gray-600">Неограниченно</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Калькулятор доставки</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Базовая аналитика</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Email поддержка</td>
+                                    <td class="px-6 py-4 text-center text-gray-300">✗</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Доступ к складу</td>
+                                    <td class="px-6 py-4 text-center text-gray-300">✗</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-900">ИИ-оптимизация</td>
+                                    <td class="px-6 py-4 text-center text-gray-300">✗</td>
+                                    <td class="px-6 py-4 text-center text-gray-300">✗</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-900">API интеграция</td>
+                                    <td class="px-6 py-4 text-center text-gray-300">✗</td>
+                                    <td class="px-6 py-4 text-center text-gray-300">✗</td>
+                                    <td class="px-6 py-4 text-center text-green-500">✓</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница о нас -->
+        <div id="about" style="display: none;">
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-white mb-4">О компании Vecto</h1>
+                    <p class="text-xl text-white opacity-90">Мы меняем мир логистики с 2025 года</p>
+                </div>
+
+                <!-- Команда -->
+                <div class="purchase-card rounded-xl p-12 mb-12">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Наша команда</h2>
+                        <p class="text-lg text-gray-600">Люди, которые делают логистику проще</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">👨🏼‍🔧</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Тороп Даниил</h3>
+                            <p class="text-red-600 mb-2">System Analyst & Testing Engineer</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-yellow-100 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">👨‍💼</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Петушок Матвей </h3>
+                            <p class="text-yellow-600 mb-2">Web developer & Business Analyst</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">👨🏼‍💻</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Назаревич Илиан</h3>
+                            <p class="text-green-600 mb-2">Проектировщик & Developer</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">👨‍🔬</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Гамеза Антон</h3>
+                            <p class="text-blue-600 mb-2">Web developer & Technical writer</p>
+                        </div>
+                        <div class="text-center">
+                        </div>
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">👷🏻‍♂</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Скоморошко Евгений</h3>
+                            <p class="text-purple-600 mb-2">Architect</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Миссия и ценности -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="form-glass rounded-xl p-8">
+                        <h2 class="text-2xl font-bold text-white mb-6">Наша миссия</h2>
+                        <p class="text-white opacity-90 mb-6">
+                            Сделать логистику максимально эффективной, прозрачной и доступной для бизнеса любого масштаба. 
+                            Мы верим, что современные технологии должны упрощать сложные процессы, а не усложнять их.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex items-center text-white">
+                                <span class="text-yellow-400 mr-3">⭐</span>
+                                <span>Инновации в каждом решении</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <span class="text-yellow-400 mr-3">⭐</span>
+                                <span>Клиентоориентированность</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <span class="text-yellow-400 mr-3">⭐</span>
+                                <span>Непрерывное развитие</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-glass rounded-xl p-8">
+                        <h2 class="text-2xl font-bold text-white mb-6">Почему выбирают нас</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="text-2xl mr-4">🚀</div>
+                                <div>
+                                    <h4 class="font-semibold text-white mb-1">Быстрое внедрение</h4>
+                                    <p class="text-sm text-white opacity-90">Начните работу уже через 15 минут после регистрации</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-2xl mr-4">💡</div>
+                                <div>
+                                    <h4 class="font-semibold text-white mb-1">Простота использования</h4>
+                                    <p class="text-sm text-white opacity-90">Интуитивно понятный интерфейс не требует обучения</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-2xl mr-4">🛡️</div>
+                                <div>
+                                    <h4 class="font-semibold text-white mb-1">Надежность</h4>
+                                    <p class="text-sm text-white opacity-90">99.9% времени работы и защита данных на уровне банков</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница демо -->
+        <div id="demo" style="display: none;">
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <!-- Баннер демо -->
+                <div class="demo-banner rounded-xl p-6 mb-8 text-center">
+                    <h2 class="text-2xl font-bold text-white mb-2">🎯 Демо-режим</h2>
+                    <p class="text-white opacity-90">Вы находитесь в демонстрационном режиме. Все данные являются примерами.</p>
+                </div>
+
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-white mb-4">Попробуйте Vecto прямо сейчас</h1>
+                    <p class="text-xl text-white opacity-90">Интерактивная демонстрация основных возможностей платформы</p>
+                </div>
+
+                <!-- Демо калькулятор -->
+                <div class="purchase-card rounded-xl p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Демо: Калькулятор доставки</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Откуда</label>
+                                        <select id="demo-from" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                            <option value="moscow">Москва</option>
+                                            <option value="spb">Санкт-Петербург</option>
+                                            <option value="ekb">Екатеринбург</option>
+                                            <option value="msk">Минск</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Куда</label>
+                                        <select id="demo-to" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                            <option value="spb">Санкт-Петербург</option>
+                                            <option value="moscow">Москва</option>
+                                            <option value="ekb">Екатеринбург</option>
+                                            <option value="msk">Минск</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Вес (кг)</label>
+                                        <input type="number" id="demo-weight" placeholder="100" min="1" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Объем (м³)</label>
+                                        <input type="number" id="demo-volume" placeholder="1.5" min="0.1" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    </div>
+                                </div>
+                                <button onclick="calculateDemo()" class="w-full btn-primary text-white py-3 rounded-lg font-medium">
+                                    Рассчитать стоимость
+                                </button>
+                            </div>
+                        </div>
+                        <div id="demo-result" class="bg-gray-50 rounded-lg p-6">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🧮</div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Результат расчета</h3>
+                                <p class="text-gray-600">Заполните параметры и нажмите "Рассчитать"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Демо статистика -->
+                <div class="grid md:grid-cols-4 gap-6 mb-8">
+                    <div class="purchase-card rounded-xl p-6 text-center">
+                        <div class="text-3xl font-bold text-purple-600 mb-2">0</div>
+                        <div class="text-gray-600">Заказов</div>
+                    </div>
+                    <div class="purchase-card rounded-xl p-6 text-center">
+                        <div class="text-3xl font-bold text-green-600 mb-2">₽0.0М</div>
+                        <div class="text-gray-600">Оборот</div>
+                    </div>
+                    <div class="purchase-card rounded-xl p-6 text-center">
+                        <div class="text-3xl font-bold text-blue-600 mb-2">₽0К</div>
+                        <div class="text-gray-600">Экономия</div>
+                    </div>
+                    <div class="purchase-card rounded-xl p-6 text-center">
+                        <div class="text-3xl font-bold text-yellow-600 mb-2">0.0</div>
+                        <div class="text-gray-600">Рейтинг</div>
+                    </div>
+                </div>
+
+                <!-- Призыв к регистрации -->
+                <div class="form-glass rounded-xl p-12 text-center">
+                    <h2 class="text-3xl font-bold text-white mb-4">Понравилось? Начните работу прямо сейчас!</h2>
+                    <p class="text-xl text-white opacity-90 mb-8">
+                        Создайте бесплатный аккаунт и получите доступ ко всем возможностям платформы
+                    </p>
+                    <button onclick="showPage('auth')" class="btn-primary text-white px-8 py-4 rounded-lg font-medium text-lg">
+                        Зарегистрироваться бесплатно
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основной контейнер для форм авторизации и регистрации -->
+<!-- Основной контейнер для форм авторизации и регистрации -->
+<div id="auth" style="display: none;">
+    <div class="relative z-10 max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Форма входа в аккаунт -->
+        <div id="login-form" class="auth-form rounded-xl p-8">
+            <!-- Заголовок и приветственное сообщение -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Вход в аккаунт</h2>
+                <p class="text-gray-600">Добро пожаловать обратно!</p>
+            </div>
+
+            <!-- Форма входа с обработчиком события отправки -->
+            <form id="login-form-element" class="space-y-6" onsubmit="return handleLogin(event)">
+                <!-- Поле для ввода email -->
+                <div>
+                    <label for="login-email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" id="login-email" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none" placeholder="your@email.com">
+                </div>
+
+                <!-- Поле для ввода пароля -->
+                <div>
+                    <label for="login-password" class="block text-sm font-medium text-gray-700 mb-2">Пароль</label>
+                    <input type="password" id="login-password" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none" placeholder="Введите пароль">
+                </div>
+
+                <!-- Чекбокс "Запомнить меня" -->
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="rounded border-gray-300 text-purple-600 focus:ring-purple-500">
+                        <span class="ml-2 text-sm text-gray-600">Запомнить меня</span>
+                    </label>
+                </div>
+
+                <!-- Кнопка отправки формы -->
+                <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-medium">Войти</button>
+            </form>
+
+            <!-- Ссылка для перехода к форме регистрации -->
+            <div class="mt-6 text-center">
+                <p class="text-gray-600">
+                    Нет аккаунта? 
+                    <button onclick="showRegisterForm()" class="text-purple-600 hover:text-purple-800 font-medium">Зарегистрироваться</button>
+                </p>
+            </div>
+        </div>
+
+        <!-- Форма регистрации, скрыта по умолчанию -->
+        <div id="register-form" class="auth-form rounded-xl p-8" style="display: none;">
+            <!-- Заголовок и описание для формы регистрации -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Регистрация</h2>
+                <p class="text-gray-600">Создайте аккаунт и начните экономить на логистике</p>
+            </div>
+
+            <!-- Форма регистрации с обработчиком события отправки -->
+            <form id="register-form-element" class="space-y-6" onsubmit="return handleRegister(event)">
+                <!-- Поля для имени и фамилии -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="register-first-name" class="block text-sm font-medium text-gray-700 mb-2">Имя</label>
+                        <input type="text" id="register-first-name" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none" placeholder="Александр">
+                    </div>
+                    <div>
+                        <label for="register-last-name" class="block text-sm font-medium text-gray-700 mb-2">Фамилия</label>
+                        <input type="text" id="register-last-name" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none" placeholder="Петров">
+                    </div>
+                </div>
+
+                <!-- Поле для email -->
+                <div>
+                    <label for="register-email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" id="register-email" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none" placeholder="your@email.com">
+                </div>
+
+                <!-- Поле для телефона -->
+                <div>
+                    <label for="register-phone" class="block text-sm font-medium text-gray-700 mb-2">Телефон</label>
+                    <input type="tel" id="register-phone" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none" placeholder="+375 29 123-45-67">
+                </div>
+
+                <!-- Поле для названия компании -->
+                <div>
+                    <label for="register-company" class="block text-sm font-medium text-gray-700 mb-2">Компания</label>
+                    <input type="text" id="register-company" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none" placeholder="ООО 'Ваша компания'">
+                </div>
+
+                <div>
+                    <label for="register-tariff" class="block text-sm font-medium text-gray-700 mb-2">Тариф</label>
+                    <select id="register-tariff" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none">
+                        <option value="basic">Базовый</option>
+                        <option value="professional">Профессиональный</option>
+                        <option value="corporate">Корпоративный</option>
+                    </select>
+                </div>
+                <!-- Поле для пароля -->
+                <div>
+                    <label for="register-password" class="block text-sm font-medium text-gray-700 mb-2">Пароль</label>
+                    <input type="password" id="register-password" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none" placeholder="Минимум 8 символов">
+                </div>
+
+                <!-- Поле для подтверждения пароля -->
+                <div>
+                    <label for="register-password-confirm" class="block text-sm font-medium text-gray-700 mb-2">Подтвердите пароль</label>
+                    <input type="password" id="register-password-confirm" required class="input-field w-full rounded-lg px-4 py-3 focus:outline-none" placeholder="Повторите пароль">
+                </div>
+
+                <!-- Чекбокс согласия с условиями -->
+                <div class="flex items-start">
+                    <input type="checkbox" id="register-terms" required class="mt-1 rounded border-gray-300 text-purple-600 focus:ring-purple-500">
+                    <label for="register-terms" class="ml-2 text-sm text-gray-600">
+                        Я согласен с 
+                        <a href="#" class="text-purple-600 hover:text-purple-800">условиями использования</a> 
+                        и 
+                        <a href="#" class="text-purple-600 hover:text-purple-800">политикой конфиденциальности</a>
+                    </label>
+                </div>
+
+                <!-- Кнопка отправки формы регистрации -->
+                <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-medium">Создать аккаунт</button>
+            </form>
+
+            <!-- Ссылка для перехода к форме входа -->
+            <div class="mt-6 text-center">
+                <p class="text-gray-600">
+                    Уже есть аккаунт? 
+                    <button onclick="showLoginForm()" class="text-purple-600 hover:text-purple-800 font-medium">Войти</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Функция для переключения на форму регистрации
+function showRegisterForm() {
+    // Скрываем форму входа
+    document.getElementById('login-form').style.display = 'none';
+    // Показываем форму регистрации
+    document.getElementById('register-form').style.display = 'block';
+}
+
+// Функция для переключения на форму входа
+function showLoginForm() {
+    // Скрываем форму регистрации
+    document.getElementById('register-form').style.display = 'none';
+    // Показываем форму входа
+    document.getElementById('login-form').style.display = 'block';
+}
+
+// Обработчик отправки формы входа
+function handleLogin(event) {
+    event.preventDefault();
+
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value.trim();
+
+        if (email === '' || password === '') {
+            alert('Пожалуйста, заполните все поля (email и пароль).');
+            return false;
+        }
+
+        fetch('https://api.vecto.com/user/entrance', {  // Замените на реальный URL API
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка: пользователя не существует или неверный пароль');
+            }
+            return response.json();  // Если сервер возвращает JSON (токен или данные)
+        })
+        .then(data => {
+            // Успешный вход: сохраните токен в localStorage, если сервер его возвращает
+            if (data.token) localStorage.setItem('authToken', data.token);
+            window.location.href = 'posle.ggg.html';  // Redirect при успехе
+        })
+        .catch(error => {
+            alert(error.message);  // Вывод ошибки, если пользователь не найден
+        });
+
+        return true;
+}
+
+// Обработчик отправки формы регистрации
+function handleRegister(event) {
+    // Предотвращаем стандартное поведение формы (отправку)
+    event.preventDefault();
+
+                const firstName = document.getElementById('register-first-name').value.trim();
+                const lastName = document.getElementById('register-last-name').value.trim();
+                const email = document.getElementById('register-email').value.trim();
+                const phone = document.getElementById('register-phone').value.trim();
+                const company = document.getElementById('register-company').value.trim();
+                const password = document.getElementById('register-password').value.trim();
+                const passwordConfirm = document.getElementById('register-password-confirm').value.trim();
+                const tariff = document.getElementById('register-tariff').value.trim();  // Новое поле
+                const terms = document.getElementById('register-terms').checked;
+
+                if (firstName === '' || lastName === '' || email === '' || phone === '' || company === '' || password === '' || passwordConfirm === '' || tariff === '') {
+                    alert('Пожалуйста, заполните все обязательные поля.');
+                    return false;
+                }
+
+                if (password !== passwordConfirm) {
+                    alert('Пароли не совпадают.');
+                    return false;
+                }
+
+                if (password.length < 8) {
+                    alert('Пароль должен содержать минимум 8 символов.');
+                    return false;
+                }
+
+                const phoneRegex = /^\+\d{12}$/;
+                if (!phoneRegex.test(phone)) {
+                    alert('Номер телефона должен начинаться с "+" и содержать ровно 12 цифр (например, +375291234567).');
+                    return false;
+                }
+
+                if (!terms) {
+                    alert('Необходимо согласиться с условиями использования и политикой конфиденциальности.');
+                    return false;
+                }
+
+                fetch('https://api.vecto.com/user/registration', {  // Замените на реальный URL API
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: firstName,
+                        surname: lastName,
+                        email: email,
+                        password: password,
+                        phone: phone,
+                        company: company,
+                        tariff: tariff
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Ошибка регистрации: ' + (response.status === 409 ? 'Пользователь уже существует' : 'Неизвестная ошибка'));
+                    }
+                    return response.json();  // Если сервер возвращает JSON
+                })
+                .then(data => {
+                    showNotification('Регистрация успешна! Теперь войдите в аккаунт.', 'success');
+                    showLoginForm();  // Переключаем на форму входа после регистрации
+                })
+                .catch(error => {
+                    alert(error.message);  // Вывод ошибки, если регистрация не удалась
+                });
+
+                return true;
+}
+</script>
+
+    <script>
+        // Функция показа страниц
+        function showPage(pageId) {
+            console.log('Переключение на страницу:', pageId);
+            
+            // Скрыть все страницы
+            const allPages = document.querySelectorAll('div[id]');
+            allPages.forEach(page => {
+                if (page.id === 'home' || page.id === 'features' || page.id === 'pricing' || page.id === 'about' || page.id === 'demo' || page.id === 'auth') {
+                    page.style.display = 'none';
+                }
+            });
+            
+            // Показать выбранную страницу
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                console.log('Страница показана:', pageId);
+            }
+            
+            // Обновить активную ссылку в навигации
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('bg-white', 'bg-opacity-20');
+                link.classList.add('opacity-80');
+            });
+            
+            // Добавить активный класс к текущей ссылке
+            const activeLink = document.getElementById(`nav-${pageId}`);
+            if (activeLink) {
+                activeLink.classList.remove('opacity-80');
+                activeLink.classList.add('bg-white', 'bg-opacity-20');
+            }
+        }
+
+        // Функции переключения форм авторизации
+        function showRegisterForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        }
+
+        function showLoginForm() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        // Функция демо-калькулятора
+        function calculateDemo() {
+            const fromCity = document.getElementById('demo-from').value;
+            const toCity = document.getElementById('demo-to').value;
+            const weight = parseFloat(document.getElementById('demo-weight').value) || 0;
+            const volume = parseFloat(document.getElementById('demo-volume').value) || 0;
+
+            if (!weight || !volume) {
+                showNotification('Пожалуйста, укажите вес и объем груза', 'error');
+                return;
+            }
+
+            // Простой расчет для демо
+            const distances = {
+                'moscow-spb': 635,
+                'moscow-ekb': 1416,
+                'moscow-msk': 715,
+                'spb-moscow': 635,
+                'spb-ekb': 1766,
+                'spb-msk': 791,
+                'ekb-moscow': 1416,
+                'ekb-spb': 1766,
+                'ekb-msk': 2476,
+                'msk-moscow': 715,
+                'msk-spb': 791,
+                'msk-ekb': 2476,
+
+            };
+
+            const routeKey = `${fromCity}-${toCity}`;
+            const distance = distances[routeKey] || 500;
+            const baseCost = distance * 25;
+            const totalCost = Math.round(baseCost * (weight / 100) * (volume / 1));
+
+            const resultDiv = document.getElementById('demo-result');
+            resultDiv.innerHTML = `
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-600 mb-4">₽${totalCost.toLocaleString()}</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Стоимость доставки</h3>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <div>Расстояние: ${distance} км</div>
+                        <div>Время доставки: 3-4 дня</div>
+                        <div>Тип транспорта: Грузовик</div>
+                    </div>
+                    <div class="mt-4">
+                        <button onclick="showPage('auth')" class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700 transition-colors">
+                            Создать заказ
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            showNotification('Расчет выполнен! Это демо-версия.', 'success');
+        }
+
+        // Обработка форм
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обработка формы входа
+            const loginForm = document.getElementById('login-form-element');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('login-email').value;
+                    const password = document.getElementById('login-password').value;
+                    
+                    if (!email || !password) {
+                        showNotification('Пожалуйста, заполните все поля', 'error');
+                        return;
+                    }
+                    
+                    
+                });
+            }
+
+            // Обработка формы регистрации
+            const registerForm = document.getElementById('register-form-element');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const firstName = document.getElementById('register-first-name').value;
+                    const lastName = document.getElementById('register-last-name').value;
+                    const email = document.getElementById('register-email').value;
+                    const phone = document.getElementById('register-phone').value;
+                    const company = document.getElementById('register-company').value;
+                    const password = document.getElementById('register-password').value;
+                    const passwordConfirm = document.getElementById('register-password-confirm').value;
+                    const terms = document.getElementById('register-terms').checked;
+                    
+                    if (!firstName || !lastName || !email || !phone || !company || !password || !passwordConfirm) {
+                        showNotification('Пожалуйста, заполните все обязательные поля', 'error');
+                        return;
+                    }
+                    
+                    if (password !== passwordConfirm) {
+                        showNotification('Пароли не совпадают', 'error');
+                        return;
+                    }
+                    
+                    if (password.length < 8) {
+                        showNotification('Пароль должен содержать минимум 8 символов', 'error');
+                        return;
+                    }
+                    
+                    if (!terms) {
+                        showNotification('Необходимо согласиться с условиями использования', 'error');
+                        return;
+                    }
+                    
+                    
+                });
+            }
+        });
+
+        // Функция показа уведомлений
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 px-6 py-4 rounded-lg shadow-lg transition-all duration-300 ${
+                type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+            }`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница загружена');
+            // Показать главную страницу по умолчанию
+            showPage('home');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'991b97d800ed5779',t:'MTc2MDk5NTU4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
